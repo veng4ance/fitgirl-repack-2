@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .form {
+            padding: 30px;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-control label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f0f0f0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-control input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form button {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border: none;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .toggle-form a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hide forms initially */
+        #login-form {
+            display: block;
+        }
+
+        #signup-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome Back!</h1>
+            <p>Please login to your account</p>
+        </div>
+
+        <div class="form" id="login-form">
+            <div class="form-control">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="Enter your email">
+            </div>
+            <div class="form-control">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password">
+            </div>
+            <button type="submit">Login</button>
+            <div class="toggle-form">
+                Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign up</a>
+            </div>
+        </div>
+
+        <div class="form" id="signup-form">
+            <div class="form-control">
+                <label for="signup-name">Full Name</label>
+                <input type="text" id="signup-name" placeholder="Enter your full name">
+            </div>
+            <div class="form-control">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" placeholder="Enter your email">
+            </div>
+            <div class="form-control">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" placeholder="Create a password">
+            </div>
+            <div class="form-control">
+                <label for="signup-confirm">Confirm Password</label>
+                <input type="password" id="signup-confirm" placeholder="Confirm your password">
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="toggle-form">
+                Already have an account? <a href="#" onclick="toggleForm('login')">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const header = document.querySelector('.header h1');
+            const subheader = document.querySelector('.header p');
+
+            if (formType === 'signup') {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                header.textContent = 'Create Account';
+                subheader.textContent = 'Sign up to get started';
+            } else {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                header.textContent = 'Welcome Back!';
+                subheader.textContent = 'Please login to your account';
+            }
+        }
+    </script>
+</body>
+</html>
